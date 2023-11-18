@@ -183,7 +183,7 @@ namespace LethalPlayers.Patches
             {
                 if ((LL.GetValue(__instance) as Array).Length == 0)
                 {
-                    __instance.serverListBlankText.text = "No available servers to join.\n\n\nBizzlemip wuz here :3";
+                    __instance.serverListBlankText.text = "No available servers to join.\n\n\nLightmaxifrvr was here to ruin your day >:3";
                 }
                 else
                 {
@@ -212,7 +212,7 @@ namespace LethalPlayers.Patches
             }
             else
             {
-                __instance.serverListBlankText.text = "No available servers to join.\n\n\nBizzlemip wuz here :3";
+                __instance.serverListBlankText.text = "No available servers to join.\n\n\nLightmaxifrvr was here to ruin your day >:3";
             }
             return;
         }
