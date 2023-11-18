@@ -237,20 +237,20 @@ namespace LethalPlayers.Patches
         [HarmonyPatch(typeof(QuickMenuManager), "Start")]
         [HarmonyPrefix]
 
-        public static bool RemovePlayerlist(ref QuickMenuManager __instance)
+        public static bool Fuckyourplayerlist(ref QuickMenuManager __instance)
         {
             __instance.playerListSlots = Helper.ResizeArray(__instance.playerListSlots, Plugin.MaxPlayers);
             for (int i = 4; i < Plugin.MaxPlayers; i++)
             {
-                PlayerListSlot NewSlot = new PlayerListSlot();
-                NewSlot.slotContainer = __instance.playerListSlots[0].slotContainer;
-                NewSlot.volumeSliderContainer = __instance.playerListSlots[0].volumeSliderContainer;
-                NewSlot.KickUserButton = __instance.playerListSlots[0].KickUserButton;
-                NewSlot.isConnected = false;
-                NewSlot.usernameHeader = __instance.playerListSlots[0].usernameHeader;
-                NewSlot.volumeSlider = __instance.playerListSlots[0].volumeSlider;
-                NewSlot.playerSteamId = __instance.playerListSlots[0].playerSteamId;
-                __instance.playerListSlots[i] = NewSlot;
+                PlayerListSlot TheBalls = new PlayerListSlot();
+                TheBalls.slotContainer = __instance.playerListSlots[0].slotContainer;
+                TheBalls.volumeSliderContainer = __instance.playerListSlots[0].volumeSliderContainer;
+                TheBalls.KickUserButton = __instance.playerListSlots[0].KickUserButton;
+                TheBalls.isConnected = false;
+                TheBalls.usernameHeader = __instance.playerListSlots[0].usernameHeader;
+                TheBalls.volumeSlider = __instance.playerListSlots[0].volumeSlider;
+                TheBalls.playerSteamId = __instance.playerListSlots[0].playerSteamId;
+                __instance.playerListSlots[i] = TheBalls;
             }
             __instance.playerListPanel.SetActive(false);
             return (true);

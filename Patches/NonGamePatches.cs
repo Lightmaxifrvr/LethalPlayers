@@ -99,7 +99,7 @@ namespace LethalPlayers.Patches
             int newnumber;
             if (!(int.TryParse(text, out newnumber)))
             {
-                newnumber = 20;
+                newnumber = 50;
             }
             newnumber = Math.Min(Math.Max(newnumber, 4), 100);
             Debug.Log(newnumber);
@@ -310,7 +310,7 @@ namespace LethalPlayers.Patches
             int number;
             if (!text.IsNullOrWhiteSpace() || !(int.TryParse(text, out number)))
             {
-                number = 20;
+                number = 50;
             }
             number = Math.Min(Math.Max(number, 4), 100);
             if (lobby.MemberCount >= number || lobby.MemberCount < 1)
