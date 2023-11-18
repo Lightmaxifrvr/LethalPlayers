@@ -5,6 +5,12 @@ this project is open source just like biggerlobby
 
 # CHANGELOG
 
+**0.5.3**
+
+This version just changed some things in this readme and also
+**THIS VERSION IS CROSS COMPATIBLE**
+
+
 **0.5.1/2**
 
 Minor : Increased Player Count from 20 to 50

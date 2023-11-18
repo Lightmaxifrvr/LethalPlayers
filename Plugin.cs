@@ -16,7 +16,7 @@ namespace LethalPlayers
     public class Plugin : BaseUnityPlugin
     {
         public static bool oldhastime;
-        public static int MaxPlayers = 40;
+        public static int MaxPlayers = 50;
         public static bool instantiating;
         public static NetworkObject[] PlayerObjects = new NetworkObject[]{ };
         //public static UnnamedStringMessageHandler MainCommunication;
