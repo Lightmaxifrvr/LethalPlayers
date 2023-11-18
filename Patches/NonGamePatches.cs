@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using TMPro;
 using System.Security.Cryptography;
 
-namespace Let.Patches
+namespace LethalPlayers.Patches
 {
     [HarmonyPatch]
     public class NonGamePatches

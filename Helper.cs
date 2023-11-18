@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BiggerLobby
+namespace LethalPlayers
 {
     public static class Helper
     {
