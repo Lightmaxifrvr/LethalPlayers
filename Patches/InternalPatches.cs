@@ -11,7 +11,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace BiggerLobby.Patches
+namespace LethalPlayers.Patches
 {
     [HarmonyPatch(typeof(HUDManager))]
     internal class InternalPatch3
