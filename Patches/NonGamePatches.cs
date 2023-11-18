@@ -110,7 +110,7 @@ namespace LethalPlayers.Patches
             Debug.Log(newnumber);
             return (true);
         }
-        [HarmonyPatch(typeof(GameNetworkManager), "StartHost")]
+        [HarmonyPatch(typeof(GameNetworkManager),"StartHost")]
         [HarmonyPrefix]
         public static bool DoTheThe()
         {

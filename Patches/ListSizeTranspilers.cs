@@ -9,20 +9,17 @@ using UnityEngine;
 namespace LethalPlayers.Patches
 {
     [HarmonyPatch]
-    public class ListSizeTranspilers
-    {
+    public class ListSizeTranspilers {
         [HarmonyPatch(typeof(HUDManager), "SyncAllPlayerLevelsServerRpc")]
         [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> SyncLevelsRpc(IEnumerable<CodeInstruction> instructions)
-        {
+        public static IEnumerable<CodeInstruction> SyncLevelsRpc(IEnumerable<CodeInstruction> instructions) {
             var codes = new List<CodeInstruction>(instructions);
-
+            
             for (int i = 0; i < codes.Count; i++)
             {
                 if (codes[i].opcode == OpCodes.Newarr)
                 {
-                    if (codes[i - 1].opcode == OpCodes.Ldc_I4_4)
-                    {
+                    if (codes[i - 1].opcode == OpCodes.Ldc_I4_4) {
                         codes[i - 1].opcode = OpCodes.Ldc_I4_S;
                         codes[i - 1].operand = Plugin.MaxPlayers;
                     }
@@ -70,14 +67,13 @@ namespace LethalPlayers.Patches
         }
         [HarmonyPatch(typeof(PlayerControllerB), "SendNewPlayerValuesServerRpc")]
         [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> SendNewPlayerValuesServerRpc(IEnumerable<CodeInstruction> instructions)
-        {
+        public static IEnumerable<CodeInstruction> SendNewPlayerValuesServerRpc(IEnumerable<CodeInstruction> instructions) {
             var codes = new List<CodeInstruction>(instructions);
             for (int i = 0; i < codes.Count; i++)
             {
                 if (codes[i].opcode == OpCodes.Blt)
                 {
-                    if (codes[i - 1].opcode == OpCodes.Ldc_I4_4)
+                    if (codes[i-1].opcode == OpCodes.Ldc_I4_4)
                     {
                         codes[i - 1].opcode = OpCodes.Ldc_I4_S;
                         codes[i - 1].operand = Plugin.MaxPlayers;
@@ -106,7 +102,7 @@ namespace LethalPlayers.Patches
             }
             return codes.AsEnumerable();
         }
-        [HarmonyPatch(typeof(DressGirlAI), "ChoosePlayerToHaunt")]
+        [HarmonyPatch(typeof(DressGirlAI), "ChoosePlayerToHaunt")]  
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> ChoosePlayerToHaunt(IEnumerable<CodeInstruction> instructions)
         {
@@ -194,11 +190,11 @@ namespace LethalPlayers.Patches
             {
                 //if (codes[i].opcode == OpCodes.Blt)
                 //{
-                if (codes[i].opcode == OpCodes.Ldc_I4_4)
-                {
-                    codes[i].opcode = OpCodes.Ldc_I4_S;
-                    codes[i].operand = Plugin.MaxPlayers;
-                }
+                    if (codes[i].opcode == OpCodes.Ldc_I4_4)
+                    {
+                        codes[i].opcode = OpCodes.Ldc_I4_S;
+                        codes[i ].operand = Plugin.MaxPlayers;
+                    }
                 //}
             }
             return codes.AsEnumerable();
@@ -218,7 +214,7 @@ namespace LethalPlayers.Patches
             }
             return codes.AsEnumerable();
         }
-
+        
         [HarmonyPatch(typeof(HUDManager), "FillEndGameStats")]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> FillEndGameStats(IEnumerable<CodeInstruction> instructions)
@@ -236,8 +232,7 @@ namespace LethalPlayers.Patches
 
         [HarmonyPatch(typeof(PlayerControllerB), "SpectateNextPlayer")]
         [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> SpectateNextPlayer(IEnumerable<CodeInstruction> instructions)
-        {
+        public static IEnumerable<CodeInstruction> SpectateNextPlayer(IEnumerable<CodeInstruction> instructions) {
             var codes = new List<CodeInstruction>(instructions);
             for (int i = 0; i < codes.Count; i++)
             {

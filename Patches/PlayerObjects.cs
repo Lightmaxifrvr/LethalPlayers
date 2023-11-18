@@ -47,7 +47,7 @@ namespace LethalPlayers.Patches
         public static bool ResizeLists2(ref ForestGiantAI __instance)
         {
             __instance.playerStealthMeters = Helper.ResizeArray(__instance.playerStealthMeters, Plugin.MaxPlayers);
-            return (true);
+            return(true);
         }
         [HarmonyPatch(typeof(HUDManager), "Awake")]
         [HarmonyPostfix]
@@ -71,16 +71,16 @@ namespace LethalPlayers.Patches
 
             }
         }
-
+        
         [HarmonyPatch(typeof(SoundManager), "Start")]
         [HarmonyPostfix]
         public static void ResizeSoundManagerLists(ref SoundManager __instance)
         {
-            __instance.playerVoicePitchLerpSpeed = new float[Plugin.MaxPlayers + 1];
+            __instance. playerVoicePitchLerpSpeed = new float[Plugin.MaxPlayers + 1];
             __instance.playerVoicePitchTargets = new float[Plugin.MaxPlayers + 1];
             __instance.playerVoiceVolumes = new float[Plugin.MaxPlayers + 1];
-            __instance.playerVoicePitches = new float[Plugin.MaxPlayers + 1];
-            for (int i = 1; i < Plugin.MaxPlayers + 1; i++)
+            __instance.playerVoicePitches = new float[Plugin.MaxPlayers+1];
+            for (int i = 1; i < Plugin.MaxPlayers+1; i++)
             {
                 __instance.playerVoicePitchLerpSpeed[i] = 3f;
                 __instance.playerVoicePitchTargets[i] = 1f;
@@ -105,7 +105,7 @@ namespace LethalPlayers.Patches
         private static bool instantiating = false;
         private static int nextClientId = 0;
         private static PlayerControllerB referencePlayer;
-        [HarmonyPatch(typeof(EnemyAI), "EnableEnemyMesh")]
+        [HarmonyPatch(typeof(EnemyAI),"EnableEnemyMesh")]
         [HarmonyPrefix]
         public static bool EnableEnemyMesh(EnemyAI __instance, bool enable, bool overrideDoNotSet = false)
         {
@@ -149,7 +149,7 @@ namespace LethalPlayers.Patches
             startOfRound = StartOfRound.Instance;
             if (startOfRound.allPlayerObjects[Plugin.MaxPlayers - 1] != null)
             {
-                return (true);
+                return(true);
             }
             Debug.Log("Adding players");
             referencePlayer = startOfRound.allPlayerObjects[0].GetComponent<PlayerControllerB>();
@@ -223,7 +223,7 @@ namespace LethalPlayers.Patches
                 NetManager2.SetValue(itemholder, NetManager.GetValue(__instance));
                 SceneObject.SetValue(itemholder2, false);
                 NetManager2.SetValue(itemholder2, NetManager.GetValue(__instance));
-
+                
                 ManualCameraRenderer[] deezlist = UnityEngine.Object.FindObjectsByType<ManualCameraRenderer>(FindObjectsInactive.Include, FindObjectsSortMode.None);
                 for (int j = 0; j < deezlist.Length; j++)
                 {
@@ -274,7 +274,7 @@ namespace LethalPlayers.Patches
 
         public static bool FixPlayerObject(ref PlayerControllerB __instance)
         {
-            if (!instantiating) return (true);
+            if (!instantiating) return(true);
             __instance.gameObject.name = $"ExtraPlayer{nextClientId}";
             __instance.playerClientId = (ulong)nextClientId;
             __instance.actualClientId = (ulong)nextClientId;
@@ -282,7 +282,7 @@ namespace LethalPlayers.Patches
             StartOfRound.Instance.allPlayerObjects[nextClientId] = __instance.transform.parent.gameObject;
             StartOfRound.Instance.allPlayerScripts[nextClientId] = __instance;
             var fields = typeof(PlayerControllerB).GetFields();
-            foreach (FieldInfo field in fields)
+            foreach (FieldInfo field in fields) 
             {
                 var myValue = field.GetValue(__instance);
                 var referenceValue = field.GetValue(referencePlayer);
