@@ -23,9 +23,6 @@ namespace LethalPlayers.Patches
                            BindingFlags.NonPublic | BindingFlags.Instance);
         }
         [HarmonyPrefix]
-
-        // chat messages and also idk why i still have the bizzlemip thing here
-
         static void Prefix(HUDManager __instance, string chatMessage, string nameOfUserWhoTyped = "")
         {
             if (!(__instance.lastChatMessage == chatMessage))

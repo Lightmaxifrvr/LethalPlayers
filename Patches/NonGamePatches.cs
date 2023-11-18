@@ -99,7 +99,7 @@ namespace LethalPlayers.Patches
             int newnumber;
             if (!(int.TryParse(text, out newnumber)))
             {
-                newnumber = 50;
+                newnumber = 20;
             }
             newnumber = Math.Min(Math.Max(newnumber, 4), 100);
             Debug.Log(newnumber);
@@ -110,7 +110,7 @@ namespace LethalPlayers.Patches
             Debug.Log(newnumber);
             return (true);
         }
-        [HarmonyPatch(typeof(GameNetworkManager),"StartHost")]
+        [HarmonyPatch(typeof(GameNetworkManager), "StartHost")]
         [HarmonyPrefix]
         public static bool DoTheThe()
         {
@@ -183,7 +183,7 @@ namespace LethalPlayers.Patches
             {
                 if ((LL.GetValue(__instance) as Array).Length == 0)
                 {
-                    __instance.serverListBlankText.text = "No available servers to join.\n\n\nLightmaxifrvr was here to ruin your day >:3";
+                    __instance.serverListBlankText.text = "No available servers to join.\n\n\nBizzlemip wuz here :3";
                 }
                 else
                 {
@@ -212,7 +212,7 @@ namespace LethalPlayers.Patches
             }
             else
             {
-                __instance.serverListBlankText.text = "No available servers to join.\n\n\nLightmaxifrvr was here to ruin your day >:3";
+                __instance.serverListBlankText.text = "No available servers to join.\n\n\nBizzlemip wuz here :3";
             }
             return;
         }
@@ -310,7 +310,7 @@ namespace LethalPlayers.Patches
             int number;
             if (!text.IsNullOrWhiteSpace() || !(int.TryParse(text, out number)))
             {
-                number = 50;
+                number = 20;
             }
             number = Math.Min(Math.Max(number, 4), 100);
             if (lobby.MemberCount >= number || lobby.MemberCount < 1)

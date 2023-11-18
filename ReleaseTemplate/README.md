@@ -5,6 +5,13 @@ this project is open source just like biggerlobby
 
 # CHANGELOG
 
+**0.5.4/5/6**
+
+(damm i really cant do a simple change XD)
+Changed the LC-API version and changed a few strings here and there.
+**ITS RECCOMENDED THAT UDATE TO AVOID HAVING ISSUES!**
+
+
 **0.5.3**
 
 This version just changed some things in this readme and also
